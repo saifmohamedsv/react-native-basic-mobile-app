@@ -25,7 +25,7 @@ const ColorCounter = ({ color, setColor, bgColor }) => {
             color: "white",
           }}
         >
-          More {color}
+          Increase {color}
         </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={decrement}>
@@ -37,7 +37,7 @@ const ColorCounter = ({ color, setColor, bgColor }) => {
             color: "white",
           }}
         >
-          Less {color}
+          Decrease {color}
         </Text>
       </TouchableOpacity>
     </View>
@@ -52,18 +52,18 @@ const styles = StyleSheet.create({
     fontWeight: "400",
   },
   sectionLayout: {
-    maxWidth: "80%",
+    maxWidth: "100%",
     width: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    marginBottom: 24,
+    marginBottom: 12,
   },
   buttonStyle: {
     fontSize: 18,
     fontWeight: "500",
-    marginVertical: 12,
-    width: 200,
+    marginVertical: 6,
+    width: 160,
     padding: 12,
   },
 });

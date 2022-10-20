@@ -16,7 +16,7 @@ const ColorControlScreen = () => {
       }}
     >
       <Text style={styles.heading}>Color Control</Text>
-      <Text>{JSON.stringify(bgColor)}</Text>
+      <Text style={{ fontSize: 16 }}>{JSON.stringify(bgColor)}</Text>
 
       <ColorCounter color={"red"} setColor={setColor} bgColor={bgColor} />
       <ColorCounter color={"green"} setColor={setColor} bgColor={bgColor} />
