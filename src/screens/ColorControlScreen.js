@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ColorCounter from "../components/ColorCounter";
 
 const ColorControlScreen = () => {
-  const [bgColor, setColor] = useState({ red: 255, green: 255, blue: 255 });
+  const [bgColor, setColor] = useState({ red: 0, green: 0, blue: 0 });
 
   return (
     <View
@@ -16,7 +16,15 @@ const ColorControlScreen = () => {
       }}
     >
       <Text style={styles.heading}>Color Control</Text>
-      <Text style={{ fontSize: 16 }}>{JSON.stringify(bgColor)}</Text>
+      <Text
+        style={{
+          fontSize: 18,
+          color: "#0c0c0c",
+          fontWeight: "600",
+        }}
+      >
+        RGB({bgColor["red"]}, {bgColor["green"]}, {bgColor["blue"]})
+      </Text>
 
       <ColorCounter color={"red"} setColor={setColor} bgColor={bgColor} />
       <ColorCounter color={"green"} setColor={setColor} bgColor={bgColor} />
