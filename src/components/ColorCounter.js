@@ -1,23 +1,15 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 
-const ColorCounter = ({ color, setColor, bgColor }) => {
-  const increment = () => {
-    if (bgColor[color] < 255) {
-      setColor((prev) => ({ ...prev, [color]: prev[color] + 20 }));
-    }
-  };
+const COLOR_INCREMENT = 15;
 
-  const decrement = () => {
-    if (bgColor[color] > 20) {
-      setColor((prev) => ({ ...prev, [color]: prev[color] - 20 }));
-    }
-  };
-
+const ColorCounter = ({ color, dispatch }) => {
   return (
     <View style={styles.sectionLayout}>
       <Text style={{ ...styles.secionTitle, color }}>{color}</Text>
-      <TouchableOpacity onPress={increment}>
+      <TouchableOpacity
+        onPress={() => dispatch({ color, amount: COLOR_INCREMENT })}
+      >
         <Text
           style={{
             ...styles.buttonStyle,
@@ -28,7 +20,9 @@ const ColorCounter = ({ color, setColor, bgColor }) => {
           Increase {color}
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={decrement}>
+      <TouchableOpacity
+        onPress={() => dispatch({ color, amount: -1 * COLOR_INCREMENT })}
+      >
         <Text
           style={{
             ...styles.buttonStyle,

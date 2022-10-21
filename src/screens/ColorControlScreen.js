@@ -1,10 +1,14 @@
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import React, { useReducer } from "react";
 import ColorCounter from "../components/ColorCounter";
 
-const ColorControlScreen = () => {
-  const [bgColor, setColor] = useState({ red: 0, green: 0, blue: 0 });
+const reducer = (state, action) => {
+  const { color, amount } = action;
+  return { ...state, [color]: state[color] + amount };
+};
 
+const ColorControlScreen = () => {
+  const [state, dispatch] = useReducer(reducer, { red: 0, green: 0, blue: 0 });
   return (
     <View
       style={{
@@ -23,18 +27,18 @@ const ColorControlScreen = () => {
           fontWeight: "600",
         }}
       >
-        RGB({bgColor["red"]}, {bgColor["green"]}, {bgColor["blue"]})
+        RGB({state["red"]}, {state["green"]}, {state["blue"]})
       </Text>
 
-      <ColorCounter color={"red"} setColor={setColor} bgColor={bgColor} />
-      <ColorCounter color={"green"} setColor={setColor} bgColor={bgColor} />
-      <ColorCounter color={"blue"} setColor={setColor} bgColor={bgColor} />
+      <ColorCounter dispatch={dispatch} color={"red"} />
+      <ColorCounter dispatch={dispatch} color={"green"} />
+      <ColorCounter dispatch={dispatch} color={"blue"} />
 
       <View
         style={{
           width: 250,
           height: 125,
-          backgroundColor: `rgb(${bgColor["red"]}, ${bgColor["green"]}, ${bgColor["blue"]})`,
+          backgroundColor: `rgb(${state["red"]}, ${state["green"]}, ${state["blue"]})`,
         }}
       ></View>
     </View>
