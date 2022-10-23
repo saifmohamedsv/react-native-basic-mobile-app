@@ -8,7 +8,7 @@ import {
   FlatList,
 } from "react-native";
 
-const Screens = ["Counter", "Colors", "ColorControl"];
+const Screens = ["Counter", "Colors", "ColorControl", "TextInput", "Box"];
 
 const HomeScreen = ({ navigation: { navigate } }) => {
   return (
